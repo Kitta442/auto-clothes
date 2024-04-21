@@ -1,0 +1,29 @@
+server:
+  port: 1212
+
+logging:
+  level:
+    root: INFO
+    ru,bft: DEBUG
+    TRANSLATION: TRACE
+
+cloths_datasource:
+  url: ${DB_URL}
+  username: ${DB_USER}
+  password: ${DB_PASSWD}
+  schema: ${DB_SCHEMA}
+  pool-name: cloth_datasource
+  max-pool-size: 32
+  idle-timeout: 300000
+  min-idle: 5
+  connection-timeout: 20000
+  leak-detection-threshold: 600000
+  max-lifetime: 120000
+  register-mbeans: true
+  connection-init-sql: SET lock_timeout = '60s';
+  connection-test-query: SELECT 1;
+  baseline-on-migrate: true
+  baseline-version: 0
+
+async-jobs:
+  concurrency: 8
